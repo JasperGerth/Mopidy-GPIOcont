@@ -43,6 +43,7 @@ Project resources
 
 - `Source code <https://github.com/jaspergerth/mopidy-gpiocont>`_
 - `Issue tracker <https://github.com/jaspergerth/mopidy-gpiocont/issues>`_
+- `Development branch tarball <https://github.com/jaspergerth/mopidy-gpiocont/archive/master.tar.gz#egg=Mopidy-GPIOcont-dev>`_
 
 
 Credits
