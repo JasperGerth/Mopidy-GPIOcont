@@ -12,8 +12,8 @@ class gpio_control(pykka.ThreadingActor, core.Corelistener):
 
     def input(self, input_event):
         if input_event == 'play':
-            print('hoer')
-            print(self.core.playlists.playlists.get())
-            vol = self.core.playback.volume.get()
-            vol += 10
-            self.core.playback.volume = vol
+            if self.core.playback.state.get() == \
+                    core.PlaybackState.PLAYING:
+                self.core.playback.pause()
+            else:
+                self.core.playback.play()
