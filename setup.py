@@ -18,7 +18,7 @@ setup(
     license='Apache License, Version 2.0',
     author='Jasper Gerth',
     author_email='jaspergerth@gmail.com',
-    description='Dingen om dingen mee te doen enzo.',
+    description='Extension to control musicbox via gpio.',
     long_description=open('README.rst').read(),
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
