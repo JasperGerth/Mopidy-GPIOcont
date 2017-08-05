@@ -21,3 +21,6 @@ class input_GPIO():
 
     def play(self, channel):
         self.frontend.input_event('play')
+        logger.debug("GPIOcont: Play pin pressed.")
+            if GPIO.input(channel)==0:
+                logger.debug("GPIOcont: Button pressed input_gpio.y.")
