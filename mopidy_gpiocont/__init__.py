@@ -6,7 +6,7 @@ import os
 from mopidy import config, ext
 
 
-__version__ = '0.1.28'
+__version__ = '0.1.37'
 
 logger = logging.getLogger(__name__)
 
@@ -25,8 +25,10 @@ class Extension(ext.Extension):
 
     def get_config_schema(self):
         schema = super(Extension, self).get_config_schema()
+        schema['enabled'] = config.Boolean()
         schema['play_pin'] = config.Integer()
-        logger.debug('GPIOcont: Play pin is at %s', schema['play_pin'])
+        schema['vol_up_pin'] = config.Integer()
+        schema['vol_down_pin'] = config.Integer()
         logger.debug("GPIOcont: User specified configuration loaded.")
         return schema
 
@@ -43,6 +45,7 @@ class Extension(ext.Extension):
             \"DAEMON_USER=mopidy\" to \"DAEMON_USER=root\"
             in the file \"/etc/init.d/mopidy\" if you are running Pi MusicBox.
             Else GPIO wont work""")
+        logger.debug("GPIOcont: Environment validated.")
         pass
 
     def setup(self, registry):
