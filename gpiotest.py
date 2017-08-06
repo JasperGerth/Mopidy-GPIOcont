@@ -3,6 +3,12 @@ try:
 except ImportError:
     print("Cannot import RPi.GPIO")
 from time import sleep
+
+try:
+    import smbus as i2c
+except ImportError:
+    print ("Cannot import smbus")
+
 class gpiotest():
 
     def __init__(self):
