@@ -20,27 +20,33 @@ class input_GPIO():
             GPIO.add_event_detect(pins['play_pin'], GPIO.FALLING, callback=self.play, bouncetime=deb_time)
 
             #Volume rotary encoder
-            GPIO.setup(pins['vol_A_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-            GPIO.setup(pins['vol_B_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-            GPIO.add_event_detect(pins['vol_A_pin'], GPIO.BOTH, callback=self.volume, bouncetime=vol_deb_time)
+            GPIO.setup(pins['vol_a_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.setup(pins['vol_b_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(pins['vol_a_pin'], GPIO.BOTH, callback=self.volume, bouncetime=vol_deb_time)
+
+            #Dedicated playlist pins
+            GPIO.setup(pins['list1_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(pins['list1_pin'], GPIO.FALLING, callback=self.list1, bouncetime=deb_time)
 
             logger.debug("GPIOcont: pin events added.")
         except RuntimeError:
-            logger.error("GPIOcont: Not enough permission to open GPIO")
+            logger.error("GPIOcont: Not enough permission to open GPIO.")
 
     def play(self, channel):
-        self.frontend.input_event('play')
+        self.frontend.input_event({'main': 'play', 'sub': 'none'})
 
-    def volume(self,channel):
-        logger.debug("Volume event.")
+    def volume(self, channel):
         if GPIO.input(channel)==1: #it was a rising edge
-            if GPIO.input(self.pins['vol_B_pin']) == 0: #clockwise movement
-                logger.debug ("Volume up!")
+            if GPIO.input(self.pins['vol_b_pin']) == 0: #clockwise movement
+                self.frontend.input_event({'main': 'volume', 'sub': 'up'})
             else: #counterclockwise movemnt
-                logger.debug("Volume down")
+                self.frontend.input_event({'main': 'volume', 'sub': 'down'})
 
         else: # it was a falling edge.
-            if GPIO.input(self.pins['vol_B_pin']) == 1: #clockwise movement
-                logger.debug("volume up")
+            if GPIO.input(self.pins['vol_b_pin']) == 1: #clockwise movement
+                self.frontend.input_event({'main': 'volume', 'sub': 'up'})
             else: #counterclockwise movement
-                logger.debug("Volume down")
+                self.frontend.input_event({'main': 'volume', 'sub': 'down'})
+
+    def list1(self, channel):
+        self.frontend.input_event({'main': 'list', 'sub': 'list1'})

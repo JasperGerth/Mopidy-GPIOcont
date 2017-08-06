@@ -6,7 +6,7 @@ import os
 from mopidy import config, ext
 
 
-__version__ = '0.1.37'
+__version__ = '0.1.39'
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +27,10 @@ class Extension(ext.Extension):
         schema = super(Extension, self).get_config_schema()
         schema['enabled'] = config.Boolean()
         schema['play_pin'] = config.Integer()
-        schema['vol_up_pin'] = config.Integer()
-        schema['vol_down_pin'] = config.Integer()
+        schema['vol_a_pin'] = config.Integer()
+        schema['vol_b_pin'] = config.Integer()
+        schema['list1_pin'] = config.Integer()
+        schema['list1_name'] = config.String()
         logger.debug("GPIOcont: User specified configuration loaded.")
         return schema
 
