@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d223eef0-0140-48b4-a738-30599db4329f" name="Default" comment="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons">
+    <list default="true" id="d223eef0-0140-48b4-a738-30599db4329f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.rst" afterPath="$PROJECT_DIR$/README.rst" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -298,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502146818104</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated readme">
+      <created>1502147110168</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1502147110168</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -337,7 +343,8 @@
     <MESSAGE value="switched to python 3" />
     <MESSAGE value="lcd screen now working" />
     <MESSAGE value="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons" />
+    <MESSAGE value="updated readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
