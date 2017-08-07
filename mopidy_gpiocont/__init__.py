@@ -6,7 +6,7 @@ import os
 from mopidy import config, ext
 
 
-__version__ = '0.1.40'
+__version__ = '0.1.41'
 
 logger = logging.getLogger(__name__)
 
@@ -42,12 +42,12 @@ class Extension(ext.Extension):
         # Any manual checks of the environment to fail early.
         # Dependencies described by setup.py are checked by Mopidy, so you
         # should not check their presence here.
-        if os.getuid() != 0:
-            logger.warning("""GPIOcont: You are not root, change the line
-            \"DAEMON_USER=mopidy\" to \"DAEMON_USER=root\"
-            in the file \"/etc/init.d/mopidy\" if you are running Pi MusicBox.
-            Else GPIO wont work""")
-        logger.debug("GPIOcont: Environment validated.")
+        # if os.getuid() != 0:
+        #     logger.warning("""GPIOcont: You are not root, change the line
+        #     \"DAEMON_USER=mopidy\" to \"DAEMON_USER=root\"
+        #     in the file \"/etc/init.d/mopidy\" if you are running Pi MusicBox.
+        #     Else GPIO wont work""")
+        # logger.debug("GPIOcont: Environment validated.")
         pass
 
     def setup(self, registry):

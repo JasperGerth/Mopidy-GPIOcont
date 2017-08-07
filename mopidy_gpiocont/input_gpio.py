@@ -1,7 +1,17 @@
-import RPi.GPIO as GPIO
-
 import logging
 logger = logging.getLogger(__name__)
+
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    logger.error("GPIOcont: Could not open GPIO")
+
+try:
+    import I2C_LCD_driver
+except ImportError:
+    logger.error("GPIOcont: could not import.")
+
+
 logger.debug("GPIOcont: input_gpio.py called.")
 
 deb_time = 50 #The debounce time for the buttons
@@ -14,6 +24,7 @@ class input_GPIO():
         try:
             # set pin mode to BCM
             GPIO.setmode(GPIO.BCM)
+
 
             # Play button
             GPIO.setup(pins['play_pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -30,7 +41,7 @@ class input_GPIO():
 
             logger.debug("GPIOcont: pin events added.")
         except RuntimeError:
-            logger.error("GPIOcont: Not enough permission to open GPIO.")
+            logger.error("GPIOcont: Not enough permission to open GPIO. do <sudo adduser mopidy gpio> to add the mopidy user to the gpio group")
 
     def play(self, channel):
         self.frontend.input_event({'main': 'play', 'sub': 'none'})
