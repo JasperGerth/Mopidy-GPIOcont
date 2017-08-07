@@ -2,31 +2,14 @@
 # Original code found at:
 # https://gist.github.com/DenisFromHR/cc863375a6e19dce359d
 
-"""
-Compiled, mashed and generally mutilated 2014-2015 by Denis Pleic
-Made available under GNU GENERAL PUBLIC LICENSE
-
-# Modified Python I2C library for Raspberry Pi
-# as found on http://www.recantha.co.uk/blog/?p=4849
-# Joined existing 'i2c_lib.py' and 'lcddriver.py' into a single library
-# added bits and pieces from various sources
-# By DenisFromHR (Denis Pleic)
-# 2015-02-10, ver 0.1
-
-"""
-
-# i2c bus (0 -- original Pi, 1 -- Rev 2 Pi)
-I2CBUS = 1
-
-# LCD Address
-ADDRESS = 0x38
+#Adapted for use with mopidy-gpiocont
 
 import smbus
 from time import sleep
 
 
 class i2c_device:
-    def __init__(self, addr, port=I2CBUS):
+    def __init__(self, addr, port):
         self.addr = addr
         self.bus = smbus.SMBus(port)
 
@@ -45,17 +28,6 @@ class i2c_device:
         self.bus.write_block_data(self.addr, cmd, data)
         sleep(0.0001)
 
-    # Read a single byte
-    def read(self):
-        return self.bus.read_byte(self.addr)
-
-    # Read
-    def read_data(self, cmd):
-        return self.bus.read_byte_data(self.addr, cmd)
-
-    # Read a block of data
-    def read_block_data(self, cmd):
-        return self.bus.read_block_data(self.addr, cmd)
 
 
 # commands
@@ -107,8 +79,8 @@ Rs = 0b00000001  # Register select bit
 
 class lcd:
     # initializes objects and lcd
-    def __init__(self):
-        self.lcd_device = i2c_device(ADDRESS)
+    def __init__(self, address, port=1):
+        self.lcd_device = i2c_device(address, port)
 
         self.lcd_write(0x03)
         self.lcd_write(0x03)
@@ -173,7 +145,7 @@ class lcd:
 
     # add custom characters (0 - 7)
     def lcd_load_custom_chars(self, fontdata):
-        self.lcd_write(0x40);
+        self.lcd_write(0x40)
         for char in fontdata:
             for line in char:
                 self.lcd_write_char(line)

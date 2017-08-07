@@ -1,9 +1,17 @@
 import pykka
 import logging
+from time import sleep
+logger = logging.getLogger(__name__)
 
 from mopidy import core
 
-logger = logging.getLogger(__name__)
+try:
+    import I2C_LCD_driver
+except ImportError:
+    logger.error("GPIOcont: could not import I2C bus.")
+
+
+
 logger.debug("GPIOcont: Frontend.py called")
 
 vol_change = 10
@@ -14,47 +22,57 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
         super(GPIOcont, self).__init__()
         self.core = core
         self.config = config
-        from .input_gpio import input_GPIO
-        self.input = input_GPIO(self, config['gpiocont'])
+        from .inout_gpio import inout_GPIO
+        self.IO = inout_GPIO(self, config['gpiocont'])
 
+        #Initialize the LCD display
+        try:
+            lcd_addr = int(config['gpiocont']['lcd_address'], 16) #Converts the address string (i.e. '0x38') to a hex integer
+            lcd_port = config['gpiocont']['lcd_port']
+            self.lcd = I2C_LCD_driver.lcd(lcd_addr, lcd_port)
+            self.lcd.lcd_display_string("BOOTING", 1)
+            self.lcd.lcd_display_string("git: jaspergerth", 2)
+            sleep(0.5)
+            self.lcd.lcd_clear()
+        except IOError:
+            logger.error("GPIOcont: Unable to initialize I2C bus, make sure mopidy is in i2c group <sudo adduser mopidy i2c>")
 
+        #Set some tracklist attributes
+        self.core.tracklist.set_repeat(True)
 
     def input_event(self, event):
         logger.debug("GPIOcont: Input event arrived at frontend.")
 
         if event['main'] == 'play':
+            logger.debug("play")
             if self.core.playback.state.get() == \
                     core.PlaybackState.PLAYING:
                 self.core.playback.pause()
             else:
                 self.core.playback.play()
 
-        if event['main'] == 'volume':
+        elif event['main'] == 'volume':
             if event['sub'] == 'up':
                 curr = self.core.playback.volume.get()
                 self.core.playback.volume = curr+vol_change
-                logger.debug("GPIOcont: volume up.")
             else:
                 curr = self.core.playback.volume.get()
                 self.core.playback.volume = curr - vol_change
 
-        if event['main'] == 'list':
-            logger.debug("GPIOcont: List in frontend.py detected.")
-            if event['sub'] == 'list1':
-                self.core.tracklist.clear()
-                logger.debug("GPIOcont: cleared")
+        elif event['main'] == 'list':
+            toPlay = None
+            self.core.tracklist.clear()
+            for toPlay in self.core.playlists.playlists.get():
+                if toPlay.name == event['sub']:
+                    break
+            for tr in toPlay.tracks:
+                self.core.tracklist.add(uri=tr.uri)
+            self.core.playback.play()
 
-                for i in self.core.playlists.playlists.get():
-                    logger.debug(i)
-
-                logger.debug("GPIOcont: That was your list")
-
-                self.core.playlist.get_items(self.config['gpiocont']['list1_name'])
-                logger.debug("GPIOcont: get items worked")
-
-                self.core.tracklist.add(uri=self.config['list1_name'])
-                logger.debug("GPIOcont: tracklist added")
-                core.playback.play()
-                logger.debug("GPIOcont: playing")
+        elif event['main'] == 'switch':
+            if event['sub'] == 'next':
+                self.core.playback.next()
+            elif event['sub'] == 'prev':
+                self.core.playback.previous()
 
 

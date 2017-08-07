@@ -27,6 +27,7 @@ setup(
         'setuptools',
         'Mopidy >= 1.0',
         'Pykka >= 1.1',
+        'smbus >= 1.1',
     ],
     entry_points={
         'mopidy.ext': [
@@ -38,7 +39,7 @@ setup(
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2',
         'Topic :: Multimedia :: Sound/Audio :: Players',
     ],
 )

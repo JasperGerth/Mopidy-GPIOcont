@@ -5,16 +5,11 @@ except ImportError:
 from time import sleep
 
 try:
-    import smbus
-except ImportError:
-    print ("Cannot import smbus")
-
-try:
     import I2C_LCD_driver
 except ImportError:
-    print("hoer")
+    print("Cannot import I2C_driver")
 
-screen=I2C_LCD_driver.lcd()
+screen = I2C_LCD_driver.lcd(0x38, 1)
 
 
 class gpiotest():
@@ -45,6 +40,8 @@ class gpiotest():
             sleep(0.5)
             screen.lcd_display_string("77777777777777777s", 1)
             screen.lcd_display_string("HAHAHAA PENIS",2)
+            sleep(1)
+            screen.lcd_clear()
 
 
 
