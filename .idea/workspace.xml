@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d223eef0-0140-48b4-a738-30599db4329f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mopidy_gpiocont/input_gpio.py" afterPath="$PROJECT_DIR$/mopidy_gpiocont/inout_gpio.py" />
+    <list default="true" id="d223eef0-0140-48b4-a738-30599db4329f" name="Default" comment="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gpiotest.py" afterPath="$PROJECT_DIR$/gpiotest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mopidy_gpiocont/I2C_LCD_driver.py" afterPath="$PROJECT_DIR$/mopidy_gpiocont/I2C_LCD_driver.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mopidy_gpiocont/__init__.py" afterPath="$PROJECT_DIR$/mopidy_gpiocont/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mopidy_gpiocont/ext.conf" afterPath="$PROJECT_DIR$/mopidy_gpiocont/ext.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mopidy_gpiocont/frontend.py" afterPath="$PROJECT_DIR$/mopidy_gpiocont/frontend.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.rst" afterPath="$PROJECT_DIR$/README.rst" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,14 +27,14 @@
       <file leaf-file-name="ext.conf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/ext.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frontend.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="frontend.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/frontend.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="605">
@@ -96,6 +90,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.rst" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.rst">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-409">
+              <caret line="17" column="112" lean-forward="false" selection-start-line="17" selection-start-column="112" selection-end-line="17" selection-end-column="112" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -126,6 +130,7 @@
         <option value="$PROJECT_DIR$/mopidy_gpiocont/inout_gpio.py" />
         <option value="$PROJECT_DIR$/mopidy_gpiocont/__init__.py" />
         <option value="$PROJECT_DIR$/mopidy_gpiocont/frontend.py" />
+        <option value="$PROJECT_DIR$/README.rst" />
       </list>
     </option>
   </component>
@@ -286,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502064314667</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons">
+      <created>1502146818103</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1502146818104</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -324,7 +336,8 @@
     <MESSAGE value="input tester added and changed volume control from buttons to rotary encoder" />
     <MESSAGE value="switched to python 3" />
     <MESSAGE value="lcd screen now working" />
-    <option name="LAST_COMMIT_MESSAGE" value="lcd screen now working" />
+    <MESSAGE value="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="dedicated playlists working, next/previous working. Now to wait for the rotary encoder from china to test the volume buttons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -687,13 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/commands.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -719,26 +725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gpiotest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/ext.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -748,6 +738,16 @@
         <state relative-caret-position="1217">
           <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/frontend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -761,13 +761,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/frontend.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="738">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mopidy_gpiocont/ext.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="17" column="112" lean-forward="false" selection-start-line="17" selection-start-column="112" selection-end-line="17" selection-end-column="112" />
+          <folding />
         </state>
       </provider>
     </entry>
