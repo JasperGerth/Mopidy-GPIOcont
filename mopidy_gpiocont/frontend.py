@@ -22,6 +22,7 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
         super(GPIOcont, self).__init__()
         self.core = core
         self.conf = config
+
         from .in_gpio import in_GPIO
         self.IO = in_GPIO(self, config['gpiocont'])
         self.vol_change = config['gpiocont']['vol_change']
@@ -58,7 +59,7 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
             if event['sub'] == 'up':
                 curr = self.core.playback.volume.get()
                 self.core.playback.volume = curr + self.vol_change
-            else:
+            elif event['sub'] == 'down':
                 curr = self.core.playback.volume.get()
                 self.core.playback.volume = curr - self.vol_change
 
@@ -70,7 +71,7 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
                 if toPlay.name == event['sub']:
                     break
             for tr in toPlay.tracks:
-                self.core.tracklist.add(uri=tr.uri)
+               self.core.tracklist.add(uri=tr.uri)
             self.core.playback.play()
 
         #prev/ next event
@@ -82,9 +83,35 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
 
 
     #Todo implement some stuff that updates the lcd screen.
-    def playback_state_changed(self, old_state, new_state):
-        logger.debug("GPIOcont: wahed episch.")
+    #def playback_state_changed(self, old_state, new_state):
 
+
+
+    #Todo interrupt current scrolling when new track is played
     def track_playback_started(self, tl_track):
-        logger.debug("GPIOcont: wahed epischer.")
+        if self.lcd_enabled:
+            empty = " " * 16
+            self.lcd.lcd_display_string(empty,1)
+            name = tl_track.track.name
+            if len(name) <= 16:
+                self.lcd.lcd_display_string(name)
+            else:
+                for i in range(0, len(name)-15):
+                    self.lcd.lcd_display_string(empty,1)
+                    lcd_text = name[i:(i + 16)]
+                    self.lcd.lcd_display_string(lcd_text, 1)
+                    sleep(0.2)
+
+                self.lcd.lcd_display_string(name)
+
+    def volume_changed(self, volume):
+        if self.lcd_enabled:
+            self.lcd.lcd_display_string("VOL",2,10)
+            if volume < 100:
+                self.lcd.lcd_display_string((' '+str(volume)), 2, 13)
+            else:
+                self.lcd.lcd_display_string(str(volume), 2, 13)
+
+
+
 
