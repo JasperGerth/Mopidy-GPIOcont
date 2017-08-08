@@ -59,7 +59,15 @@ Mopidy-GPIOcont to your Mopidy configuration file (Note that the list_name are s
 The configuration shown here is also the default configuration. Below is an explanation for each setting
 (Pins are in BCM mode you can see `here <http://raspberrypi.stackexchange.com/a/12967>`_  what your pin numbers are.):
 
+REQUIRED
+
 ``enabled``: If the extension is enabled or not.
+
+``list<i>_name``: Name of your dedicated playlist (no trailing spaces).
+
+``lcd_address``: Address of your LCD screen on the I2C bus.
+
+OPTIONAL (Else default values are used)
 
 ``play_pin``: Location of your play/pause button.
 
@@ -69,6 +77,12 @@ The configuration shown here is also the default configuration. Below is an expl
 
 ``vol_b_pin``: Location of channel B of your rotary encoder (also sometimes DT ).
 
+``list<i>_pin``: Location of your dedicated playlist buttons.
+
+``lcd_enable``: If you want to enable your LCD screen.
+
+``lcd_port``: Port of the I2C bus (0 for RasPi 1 and 1 for Raspi 2/3).
+
 
 These two settings have to be adjusted to fit your rotary encoder if your volume control is not working well.
 
@@ -76,15 +90,9 @@ These two settings have to be adjusted to fit your rotary encoder if your volume
 
 ``vol_change``: Change in volume (up/down) per detected edge on channel A
 
-``list<i>_pin``: Location of your dedicated playlist buttons.
 
-``list<i>_name``: Name of your dedicated playlist (no trailing spaces).
 
-``lcd_enable``: If you want to enable your LCD screen.
 
-``lcd_address``: Address of your LCD screen on the I2C bus.
-
-``lcd_port``: Port of the I2C bus (0 for RasPi 1 and 1 for Raspi 2/3).
 
 
 
