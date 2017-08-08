@@ -69,6 +69,7 @@ The configuration shown here is also the default configuration. Below is an expl
 
 ``vol_b_pin``: Location of channel B of your rotary encoder (also sometimes DT ).
 
+
 These two settings have to be adjusted to fit your rotary encoder if your volume control is not working well.
 
 ``vol_bounce_time``: Time in milliseconds to wait before another edge is detected on channel A.
