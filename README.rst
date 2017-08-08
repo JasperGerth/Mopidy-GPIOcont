@@ -59,7 +59,7 @@ Mopidy-GPIOcont to your Mopidy configuration file (Note that the list_name are s
 The configuration shown here is also the default configuration. Below is an explanation for each setting
 (Pins are in BCM mode you can see `here <http://raspberrypi.stackexchange.com/a/12967>`_  what your pin numbers are.).
 
-Since Mopidy-GPIOcont uses the internal pullup resistors of your Raspberry buttons should be connected as
+Since Mopidy-GPIOcont uses the internal pullup resistors of your Raspberry, buttons should be connected as:
 
 [Pin] -> [Button] -> [Ground].
 
@@ -83,9 +83,9 @@ OPTIONAL (Else default values are used)
 
 ``next_pin`` and ``prev_pin`` : Location of your next and previous button.
 
-``vol_a_pin``: Location of channel A of your rotary encoder (also sometimes CLK ).
+``vol_a_pin``: Location of channel A of your rotary encoder (also sometimes CLK).
 
-``vol_b_pin``: Location of channel B of your rotary encoder (also sometimes DT ).
+``vol_b_pin``: Location of channel B of your rotary encoder (also sometimes DT).
 
 ``list<i>_pin``: Location of your dedicated playlist buttons.
 

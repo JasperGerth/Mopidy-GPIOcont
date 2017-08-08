@@ -14,7 +14,7 @@ except ImportError:
 
 logger.debug("GPIOcont: Frontend.py called")
 
-vol_change = 2 # Default volume change
+
 
 class GPIOcont(pykka.ThreadingActor, core.CoreListener):
 
@@ -29,6 +29,7 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
         try:
             lcd_addr = int(config['gpiocont']['lcd_address'], 16) #Converts the address string (i.e. '0x38') to a hex integer
             lcd_port = config['gpiocont']['lcd_port']
+            self.vol_change = config['gpiocont']['vol_change']
             self.lcd = I2C_LCD_driver.lcd(lcd_addr, lcd_port)
             self.lcd.lcd_display_string("BOOTING", 1)
             self.lcd.lcd_display_string("git: jaspergerth", 2)
@@ -51,12 +52,14 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
                 self.core.playback.play()
 
         elif event['main'] == 'volume':
+            logger.debug("GPIOcont: vol change.")
             if event['sub'] == 'up':
+                logger.debug("GPIOcont: up")
                 curr = self.core.playback.volume.get()
-                self.core.playback.volume = curr + self.conf['vol_change']
+                self.core.playback.volume = curr + self.vol_change
             else:
                 curr = self.core.playback.volume.get()
-                self.core.playback.volume = curr - self.conf['vol_change']
+                self.core.playback.volume = curr - self.vol_change
 
         elif event['main'] == 'list':
             toPlay = None
@@ -73,5 +76,6 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
                 self.core.playback.next()
             elif event['sub'] == 'prev':
                 self.core.playback.previous()
+                #Todo go to previous song, not beginning of current song.
 
 
