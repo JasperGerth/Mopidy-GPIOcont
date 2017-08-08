@@ -14,14 +14,14 @@ except ImportError:
 
 logger.debug("GPIOcont: Frontend.py called")
 
-vol_change = 10
+vol_change = 2 # Default volume change
 
 class GPIOcont(pykka.ThreadingActor, core.CoreListener):
 
     def __init__(self, config, core):
         super(GPIOcont, self).__init__()
         self.core = core
-        self.config = config
+        self.conf = config
         from .inout_gpio import inout_GPIO
         self.IO = inout_GPIO(self, config['gpiocont'])
 
@@ -41,7 +41,6 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
         self.core.tracklist.set_repeat(True)
 
     def input_event(self, event):
-        logger.debug("GPIOcont: Input event arrived at frontend.")
 
         if event['main'] == 'play':
             logger.debug("play")
@@ -54,10 +53,10 @@ class GPIOcont(pykka.ThreadingActor, core.CoreListener):
         elif event['main'] == 'volume':
             if event['sub'] == 'up':
                 curr = self.core.playback.volume.get()
-                self.core.playback.volume = curr+vol_change
+                self.core.playback.volume = curr + self.conf['vol_change']
             else:
                 curr = self.core.playback.volume.get()
-                self.core.playback.volume = curr - vol_change
+                self.core.playback.volume = curr - self.conf['vol_change']
 
         elif event['main'] == 'list':
             toPlay = None

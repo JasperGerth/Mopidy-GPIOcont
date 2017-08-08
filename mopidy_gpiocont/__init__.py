@@ -27,25 +27,28 @@ class Extension(ext.Extension):
         schema = super(Extension, self).get_config_schema()
         # "Normal" control pins
         schema['enabled'] = config.Boolean()
-        schema['play_pin'] = config.Integer()
-        schema['next_pin'] = config.Integer()
-        schema['prev_pin'] = config.Integer()
+        schema['play_pin'] = config.Integer(optional=True)
+        schema['next_pin'] = config.Integer(optional=True)
+        schema['prev_pin'] = config.Integer(optional=True)
         #Import A and B channels volume encoder
-        schema['vol_a_pin'] = config.Integer()
-        schema['vol_b_pin'] = config.Integer()
+        schema['vol_a_pin'] = config.Integer(optional=True)
+        schema['vol_b_pin'] = config.Integer(optional=True)
+        schema['vol_bounce_time'] = config.Integer(optional=True)
+        schema['vol_change'] = config.Integer(optional=True)
         #import dedicated playlist pins
-        schema['list1_pin'] = config.Integer()
-        schema['list2_pin'] = config.Integer()
-        schema['list3_pin'] = config.Integer()
-        schema['list4_pin'] = config.Integer()
+        schema['list1_pin'] = config.Integer(optional=True)
+        schema['list2_pin'] = config.Integer(optional=True)
+        schema['list3_pin'] = config.Integer(optional=True)
+        schema['list4_pin'] = config.Integer(optional=True)
         #import dedicated playlist names
         schema['list1_name'] = config.String()
         schema['list2_name'] = config.String()
         schema['list3_name'] = config.String()
         schema['list4_name'] = config.String()
         #imoport lcd address and port
+        schema['lcd_enable'] = config.Boolean(optional=True)
         schema['lcd_address'] = config.String()
-        schema['lcd_port'] = config.Integer()
+        schema['lcd_port'] = config.Integer(optional=True)
         logger.debug("GPIOcont: User specified configuration loaded.")
         return schema
 

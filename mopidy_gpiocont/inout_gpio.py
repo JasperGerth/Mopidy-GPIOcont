@@ -11,13 +11,14 @@ except ImportError:
 
 logger.debug("GPIOcont: input_gpio.py called.")
 
-deb_time = 200 #The debounce time for the buttons in ms
-vol_deb_time = 50 # The debounce time for the rotary encoder in ms
 
 class inout_GPIO():
     def __init__(self, frontend, conf):
         self.frontend = frontend
         self.conf = conf
+
+        deb_time = 200  # The debounce time for the buttons in ms
+        vol_deb_time = conf['vol_bounce_time'] #Debounce time for rotary encoder in ms
 
 
         try:
