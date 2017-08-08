@@ -57,7 +57,11 @@ Mopidy-GPIOcont to your Mopidy configuration file (Note that the list_name are s
     lcd_port = 1
 
 The configuration shown here is also the default configuration. Below is an explanation for each setting
-(Pins are in BCM mode you can see `here <http://raspberrypi.stackexchange.com/a/12967>`_  what your pin numbers are.):
+(Pins are in BCM mode you can see `here <http://raspberrypi.stackexchange.com/a/12967>`_  what your pin numbers are.).
+
+Since Mopidy-GPIOcont uses the internal pullup resistors of your Raspberry buttons should be connected as
+
+[Pin] -> [Button] -> [Ground].
 
 REQUIRED
 
