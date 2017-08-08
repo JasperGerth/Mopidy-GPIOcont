@@ -12,12 +12,12 @@ except ImportError:
 logger.debug("GPIOcont: input_gpio.py called.")
 
 
-class inout_GPIO():
+class in_GPIO():
     def __init__(self, frontend, conf):
         self.frontend = frontend
         self.conf = conf
 
-        deb_time = 200  # The debounce time for the buttons in ms
+        deb_time = 300  # The debounce time for the buttons in ms
         vol_deb_time = conf['vol_bounce_time'] #Debounce time for rotary encoder in ms
 
 
@@ -62,7 +62,7 @@ class inout_GPIO():
             self.frontend.input_event({'main': 'play', 'sub': 'none'})
 
 
-
+    #Todo Make volume control more stable.
     def volume(self, channel):
         if GPIO.input(channel)==1: #it was a rising edge
             if GPIO.input(self.conf['vol_b_pin']) == 0: #clockwise movement
