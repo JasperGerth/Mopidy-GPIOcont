@@ -73,7 +73,7 @@ REQUIRED
 
 ``list<i>_name``: Name of your dedicated playlist (no trailing spaces).
 
-``lcd_address``: Address of your LCD screen on the I2C bus. Hexadecimal without `0x`.
+``lcd_address``: Address of your LCD screen on the I2C bus. Hexadecimal without the leading "0x".
 Can be found with ``sudo i2cdetect -y 1`` or ``sudo i2cdetect -y 0``.
 This command uses the i2c-tools ``sudo apt-get install i2c-tools``.
 
