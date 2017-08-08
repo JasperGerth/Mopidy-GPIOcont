@@ -63,13 +63,17 @@ Since Mopidy-GPIOcont uses the internal pullup resistors of your Raspberry butto
 
 [Pin] -> [Button] -> [Ground].
 
+Configuration options
+=====================
+Not all config values have to be set, below is an explanation for each configuration value.
+
 REQUIRED
 
 ``enabled``: If the extension is enabled or not.
 
 ``list<i>_name``: Name of your dedicated playlist (no trailing spaces).
 
-``lcd_address``: Address of your LCD screen on the I2C bus.
+``lcd_address``: Address of your LCD screen on the I2C bus (can be found with ``sudo i2cdetect -y 1`` or ``sudo i2cdetect -y 0``).
 
 OPTIONAL (Else default values are used)
 
