@@ -88,7 +88,7 @@ These two settings have to be adjusted to fit your rotary encoder if your volume
 
 ``vol_bounce_time``: Time in milliseconds to wait before another edge is detected on channel A.
 
-``vol_change``: Change in volume (up/down) per detected edge on channel A
+``vol_change``: Change in volume (up/down) per detected edge on channel A.
 
 
 
