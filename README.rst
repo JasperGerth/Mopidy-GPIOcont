@@ -33,7 +33,7 @@ Configuration
 =============
 
 Before starting Mopidy, you must add configuration for
-Mopidy-GPIOcont to your Mopidy configuration file (Note that the list_name are strings and should not be followed by a space)::
+Mopidy-GPIOcont to your Mopidy configuration file (~./etc/mopidy/mopidy.conf)Note that the list_name are strings and should not be followed by a space.::
 
     [gpiocont]
     enabled = true
