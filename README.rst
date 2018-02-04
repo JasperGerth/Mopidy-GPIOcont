@@ -124,7 +124,7 @@ Credits
 
 Changelog
 =========
-v0.2.1 (RELEASED)
+v0.2.2 (RELEASED)
 ----------------------------------------
 - Playlists working
 - Volume and current track shown on lcd screen
