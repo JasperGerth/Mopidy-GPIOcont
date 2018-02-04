@@ -126,9 +126,9 @@ Changelog
 =========
 v0.2.1 (RELEASED)
 ----------------------------------------
--Playlists working
--Volume and current track shown on lcd screen
--Volume control working (needs some work)
+- Playlists working
+- Volume and current track shown on lcd screen
+- Volume control working (needs some work)
 
 v0.2.0 (UNRELEASED)
 ----------------------------------------
